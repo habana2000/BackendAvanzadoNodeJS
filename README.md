@@ -163,7 +163,8 @@ Student: Xavi Roca
 
 * Packages:
   * node-jsonwebtoken (auth0.com) --> `npm i node-jsonwebtoken` ... ([auth0.com](https://auth0.com/))
-  * bcrypt --> `npm i bcrypt`
+  * bcrypt --> `npm i bcrypt` (encriptación de passwords)
+  * dotenv --> `npm i dotenv` (almacenamiento variables de entorno)
 
 ## Challenge: Authentication
 

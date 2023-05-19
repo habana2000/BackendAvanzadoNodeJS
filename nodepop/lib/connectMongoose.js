@@ -14,6 +14,7 @@ mongoose.connection.once('open', () => {
     console.log('***Connected to MongoDB on***',mongoose.connection,name)
 });
 
-mongoose.connect('mongodb://127.0.0.1:27017/practica');
+// mongoose.connect('mongodb://127.0.0.1:27017/practica');
+mongoose.connect(process.env.MONGODB_CONNECTION_STR);
 
 module.exports = mongoose.connection;

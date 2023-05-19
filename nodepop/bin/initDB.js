@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').config();
+
 // const { Anuncio, Usuario } = require('../models');
 const Anuncio = require('../models/Anuncio');
 const Usuario = require('../models/Usuario');

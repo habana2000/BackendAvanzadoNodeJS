@@ -16,7 +16,8 @@ module.exports = async (req,res,next) => {
         }
         
         // comprobamos que el tocken es válido
-        const payload = await jwt.verify(jwtToken, 'WU8UJyrtW7dqPcFaJ3Pc9Usp3JU5EGkR');
+        const payload = await jwt.verify(jwtToken, process.env.JWT_SECRET);
+
 
         next();
 
