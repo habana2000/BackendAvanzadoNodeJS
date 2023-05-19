@@ -1,5 +1,5 @@
 *************************
-#  NodeJS practise
+#  NodeJS practice
 *************************
 Student: Xavi Roca 
 (26.FEB.23)
@@ -152,4 +152,23 @@ D:\KeepCoding\05.Backend-NodeJS\PracticaNodeJS\nodepop\views\index.ejs
 
 ✖ 18 problems (18 errors, 0 warnings)
 ```
+
+*************************
+#  Advanced Backend NodeJS -  practice
+*************************
+Student: Xavi Roca 
+(28.MAY.23)
+
+## Prerequisites
+
+* Packages:
+  * node-jsonwebtoken (auth0.com) --> `npm i node-jsonwebtoken` ... ([auth0.com](https://auth0.com/))
+  * bcrypt --> `npm i bcrypt`
+
+## Challenge: Authentication
+
+JWT authentication on API
+
+User : user@example.com / 1234
+
 

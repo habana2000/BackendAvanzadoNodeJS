@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "cross-env DEBUG=nodeapp:* nodemon ./bin/www",
+    "dev": "cross-env DEBUG=nodeapp:* NODE_ENV=development nodemon ./bin/www",
     "initDB": "node ./bin/initDB"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "cross-env": "^7.0.3",
     "debug": "~2.6.9",
@@ -17,6 +19,7 @@
     "http-errors": "~1.6.3",
     "mongoose": "^6.9.2",
     "morgan": "~1.9.1",
+    "node-jsonwebtoken": "^0.0.1",
     "nodemon": "^2.0.20"
   }
 }

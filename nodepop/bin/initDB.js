@@ -1,6 +1,9 @@
 'use strict';
 
+// const { Anuncio, Usuario } = require('../models');
 const Anuncio = require('../models/Anuncio');
+const Usuario = require('../models/Usuario');
+
 const connection = require ('../lib/connectMongoose');
 
 main().catch(err => console.log('***There was an error***',err));
@@ -8,6 +11,8 @@ main().catch(err => console.log('***There was an error***',err));
 async function main() {
 
     await initAnuncios();
+
+    await initUsuarios();
 
     connection.close();
 }
@@ -27,3 +32,16 @@ async function initAnuncios() {
     ]);
     console.log(`***Creados ${inserted.length} anuncios.***`)
 }
+
+async function initUsuarios() {
+    // borrar todos los documentos de usuarios
+    const deleted = await Usuario.deleteMany();
+    console.log(`Eliminados ${deleted.deletedCount} usuarios.`);
+  
+    // crear usuarios iniciales
+    const inserted = await Usuario.insertMany([
+      { email: 'admin@example.com', password: await Usuario.hashPassword('1234')},
+      { email: 'user@example.com', password: await Usuario.hashPassword('1234')},
+    ]);
+    console.log(`Creados ${inserted.length} usuarios.`);
+  }
