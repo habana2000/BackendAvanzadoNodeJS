@@ -165,11 +165,18 @@ Student: Xavi Roca
   * node-jsonwebtoken (auth0.com) --> `npm i node-jsonwebtoken` ... ([auth0.com](https://auth0.com/))
   * bcrypt --> `npm i bcrypt` (encriptación de passwords)
   * dotenv --> `npm i dotenv` (almacenamiento variables de entorno)
+  * i18n --> `npm i i18n` (internacionalización)
 
 ## Challenge: Authentication
 
 JWT authentication on API
 
 User : user@example.com / 1234
+
+## Challenge: Internationalization
+
+Multilanguage frontend: ESP & ENG
+
+There must be a laguage selector: ESP | ENG
 
 

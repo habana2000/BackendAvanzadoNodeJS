@@ -60,9 +60,6 @@ class LoginController {
     try {
       const { email, password } = req.body;
 
-      console.log('Secreto: ', process.env.JWT_SECRET)
-
-
       // buscar el usuario en la BD
       const usuario = await Usuario.findOne({ email: email });
 

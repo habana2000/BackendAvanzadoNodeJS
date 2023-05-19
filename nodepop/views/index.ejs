@@ -5,24 +5,26 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
 
-    <h2>Lista de anuncios</h2>
+      <% include cabecera.ejs %>
+
+      <p><%= __('Welcome to') %> <%= title %></p>
+
+      <h2><%= __('Adverts list') %></h2>
     <table>
 
-      <% anuncios.forEach(anuncio => { %>
-        <tr>
-          <td>  
-            <p>Anuncio: <%= anuncio.nombre %> --> Precio: <%= anuncio.precio %> €</p>
-            <p>Venta? <%= anuncio.venta %> // Tags: <%= anuncio.tags %></p>
-          </td>    
-          <td>
-            <img src="../images/anuncios/<%= anuncio.foto %>" alt="<%= anuncio.foto %>" width=200>
-          </td>
-        </tr>
-        <% }) %>
-        
+        <% anuncios.forEach(anuncio => { %>
+          <tr>
+            <td>  
+              <p><%= __('Advert:') %> <%= anuncio.nombre %> --> <%= __('Price:') %> <%= anuncio.precio %> €</p>
+              <p><%= __('For sale?') %> <%= anuncio.venta %> // <%= __('Tags:') %> <%= anuncio.tags %></p>
+            </td>    
+            <td>
+              <img src="../images/anuncios/<%= anuncio.foto %>" alt="<%= anuncio.foto %>" width=200>
+            </td>
+          </tr>
+          <% }) %>
+          
     </table>
   </body>
 </html>

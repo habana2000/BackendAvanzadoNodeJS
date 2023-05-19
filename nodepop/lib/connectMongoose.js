@@ -11,7 +11,7 @@ mongoose.connection,on('error', err => {
 });
 
 mongoose.connection.once('open', () => {
-    console.log('***Connected to MongoDB on***',mongoose.connection,name)
+    console.log('***Connected to MongoDB on***',name)
 });
 
 // mongoose.connect('mongodb://127.0.0.1:27017/practica');

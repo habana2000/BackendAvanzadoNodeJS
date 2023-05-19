@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const LoginController = require('./controllers/loginController');
+const i18n = require('./lib/i18nConfigure');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -21,6 +22,7 @@ app.set('x-powered-by', false);
 
 app.locals.title = 'NodePop';
 
+app.use(i18n.init);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
