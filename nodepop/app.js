@@ -22,7 +22,6 @@ app.set('x-powered-by', false);
 
 app.locals.title = 'NodePop';
 
-app.use(i18n.init);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,16 +32,19 @@ const loginController = new LoginController();
 
 /**
  * Rutas del API
- */
+*/
 app.use('/api/anuncios', jwtAuthMiddleware, require('./routes/api/anuncios'));
 app.post('/api/authenticate', loginController.postAPI);
 
 
+app.use(i18n.init);
 /**
  * Rutas del Browser
- */
+*/
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/features', require('./routes/features'));
+app.use('/change-locale', require('./routes/change-locale'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
