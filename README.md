@@ -102,7 +102,8 @@ Here you are the two different web pages
 
 ## ESLINT execution
 
-* npx slint nodepop/**
+* npm ini @eslint/config
+* npx eslint nodepop/**
 * output file with errors I don't know how to solve ...
 
 ```sh
