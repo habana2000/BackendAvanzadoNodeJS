@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const Anuncio = require('../../models/Anuncio');
+const upload = require('../../lib/uploadConfigure');
 
 /**
  * GET /api/anuncios
@@ -95,10 +96,11 @@ router.get('/tags/', async (req, res, next) => {
  * POST /api/anuncios/add
  * Crea un anuncio
  */
-router.post('/add/', async (req, res, next) => {
+router.post('/add/', upload.single('fotosubida'), async (req, res, next) => {
     try {
 
         const anuncioData = req.body;
+        anuncioData.fotosubida = req.file.filename;
 
         const anuncio = new Anuncio(anuncioData);
 
