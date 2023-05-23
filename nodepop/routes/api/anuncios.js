@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const Anuncio = require('../../models/Anuncio');
 const upload = require('../../lib/uploadConfigure');
+const { Requester } = require('cote');
 
 /**
  * GET /api/anuncios
@@ -96,6 +97,8 @@ router.get('/tags/', async (req, res, next) => {
  * POST /api/anuncios/add
  * Crea un anuncio
  */
+const requester = new Requester({ name: 'Gestor de anuncios' });
+
 router.post('/add/', upload.single('fotosubida'), async (req, res, next) => {
     try {
 
@@ -105,6 +108,15 @@ router.post('/add/', upload.single('fotosubida'), async (req, res, next) => {
         const anuncio = new Anuncio(anuncioData);
 
         const anuncioGuardado = await anuncio.save();
+
+        // Llamamos al servicio que genera el thumbnail
+        const evento = {
+            type: 'create-thumbnail',
+        }
+        
+        requester.send(evento, resultado => {
+            console.log(resultado);
+        });
 
         res.json({result: anuncioGuardado});
 
