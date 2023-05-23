@@ -167,6 +167,7 @@ Student: Xavi Roca
   * bcrypt --> `npm i bcrypt` (encriptación de passwords)
   * dotenv --> `npm i dotenv` (almacenamiento variables de entorno)
   * i18n --> `npm i i18n` (internacionalización)
+  * multer --> `npm i multer` (subida de imágenes, [npm multer](https://www.npmjs.com/package/multer))
 
 ## Challenge: Authentication
 
@@ -179,5 +180,35 @@ User : user@example.com / 1234
 Multilanguage frontend: ESP & ENG
 
 There must be a laguage selector: ESP | ENG
+
+## Challenge: Uploading images
+
+I wanted to save old development of initDB.js, therefore I've just add two new fields to Anuncio's schema
+
+```js
+const anuncioSchema = mongoose.Schema({
+    nombre: String,
+    venta: Boolean,
+    precio: Number,
+    tags: [String],
+    
+    // Previous uploaded picture: /public/images/anuncios
+    // Used by initDB.js
+    foto: String,
+
+    // Last uploaded fotos using multer: /public/fotossubidas
+    fotosubida: String,
+
+    // Field to store the thumbnail
+    thumbnail: String,
+});
+```
+
+I've created two new ffolders at /public directory
+
+* fotossubidas --> Including original pictures uploaded
+* thumbnails --> destination of generated thumbnails 
+
+
 
 

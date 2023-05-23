@@ -3,4 +3,6 @@ node_modules
 salida.txt
 
 nodepop/.env
-nodepop/public/fotossubidas
+
+nodepop/public/fotossubidas/*
+nodepop/public/thumbnails/*

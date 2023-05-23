@@ -7,9 +7,16 @@ const anuncioSchema = mongoose.Schema({
     nombre: String,
     venta: Boolean,
     precio: Number,
-    foto: String,
     tags: [String],
+    
+    // Previous uploaded picture: /public/images/anuncios
+    // Used by initDB.js
+    foto: String,
+
+    // Last uploaded fotos using multer: /public/fotossubidas
     fotosubida: String,
+
+    // Field to store the thumbnail
     thumbnail: String,
 });
 
