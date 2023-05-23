@@ -209,6 +209,16 @@ I've created two new ffolders at /public directory
 * fotossubidas --> Including original pictures uploaded
 * thumbnails --> destination of generated thumbnails 
 
+I've set a dual source for index.ejs view in order to take any of the two pictures (foto or fotosubida)
+
+```html
+<td>
+  <img src="../images/anuncios/<%= anuncio.foto %>" 
+  alt="<%= anuncio.foto %>" width=200>
+  <img src="fotossubidas/<%= anuncio.fotosubida %>" 
+  alt="<%= anuncio.fotosubida %>" width=200>
+</td>
+```
 
 
 
