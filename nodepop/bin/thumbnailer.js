@@ -1,32 +1,46 @@
 'use strict'
 
-const Jimp = require('jimp');
+const jimp = require('jimp');
+const path = require('node:path');
+// const Anuncio = require('../models/Anuncio');
 
-const Anuncio = require('../models/Anuncio');
 const { Responder } = require('cote');
 
 const responder= new Responder({ name: 'thumbnails maker' });
 
-const generarThumbnail = async () => {
-    const foto = await Foto.findOne({}); // Obtén un documento de la colección (puedes ajustar esta consulta según tus necesidades)
+//  Versión que únicamente genera el Thumbnail y lo guarda  
+responder.on('create-thumbnail', async (req,done) => {
+  try {
+    const rutaImagenOriginal = req.fotosubida;
+    const rutaThumbnail = req.thumbnail;
+    
+    const imagenOriginal = await jimp.read(path.join(__dirname,'..','public','fotossubidas',rutaImagenOriginal));
+    imagenOriginal.resize(100, 100).write(path.join(__dirname,'..','public','thumbnails',rutaThumbnail)); // Cambiar el tamaño del thumbnail según tus necesidades
   
-    const image = await Jimp.read(foto.fotosubida);
-    await image.resize(200, 200).writeAsync('ruta_del_thumbnail'); // Reemplaza 'ruta_del_thumbnail' por la ruta real del thumbnail
-  
-    foto.thumbnail = 'ruta_del_thumbnail'; // Reemplaza 'ruta_del_thumbnail' por la ruta real del thumbnail
-    await foto.save();
-  
-    console.log('Thumbnail generado y campos actualizados correctamente');
-};
+    console.log('Thumbnail creado --> ', rutaThumbnail);
+    done(true)
 
-responder.on('create-thumbnail', (req, done) => {
-    generarThumbnail().catch(err => {
-      console.error('Error al generar thumbnail:', err);
-    });
-});
+  } catch (error) {
+    console.error('Error al generar el thumbnail:', error);
+  }
+})
 
+/* VERSION QUE NO FUNCIONA, NO ALMACENA EL ANUNCIO
 
+responder.on('create-thumbnail', async (req,done) => {
+  try {
+    const anuncio = new Anuncio(req.anuncio);
 
+    const rutaImagenOriginal = anuncio.fotosubida;
+    const rutaThumbnail = rutaImagenOriginal.replace('.jpg', '-thumbnail.jpg'); // Cambiar la extensión a "x.jpg"
+
+    const imagenOriginal = await jimp.read(path.join(__dirname,'..','public','fotossubidas',rutaImagenOriginal));
+    imagenOriginal.resize(100, 100).write(path.join(__dirname,'..','public','thumbnails',rutaThumbnail)); // Cambiar el tamaño del thumbnail según tus necesidades
+
+    await anuncio.updateOne({ thumbnail: rutaThumbnail });
   
-  // Llama a la función generarThumbnail para ejecutar el proceso
-  
+  } catch (error) {
+    console.error('Error al generar el thumbnail:', error);
+  }
+})
+*/

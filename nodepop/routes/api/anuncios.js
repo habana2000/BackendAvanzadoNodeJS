@@ -104,6 +104,7 @@ router.post('/add/', upload.single('fotosubida'), async (req, res, next) => {
 
         const anuncioData = req.body;
         anuncioData.fotosubida = req.file.filename;
+        anuncioData.thumbnail = req.file.filename.replace('.jpg', '-thumbnail.jpg');
 
         const anuncio = new Anuncio(anuncioData);
 
@@ -112,10 +113,13 @@ router.post('/add/', upload.single('fotosubida'), async (req, res, next) => {
         // Llamamos al servicio que genera el thumbnail
         const evento = {
             type: 'create-thumbnail',
+            // anuncio: anuncioGuardado,
+            fotosubida: anuncioGuardado.fotosubida,
+            thumbnail: anuncioGuardado.thumbnail
         }
-        
+
         requester.send(evento, resultado => {
-            console.log(resultado);
+            console.log('Thumbail creado --> ', anuncioGuardado.thumbnail);
         });
 
         res.json({result: anuncioGuardado});

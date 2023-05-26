@@ -207,12 +207,12 @@ const anuncioSchema = mongoose.Schema({
 });
 ```
 
-I've created two new ffolders at /public directory
+I've created two new folders at /public directory
 
-* fotossubidas --> Including original pictures uploaded
-* thumbnails --> destination of generated thumbnails 
+* fotossubidas --> Including original pictures uploaded (Sample: fotosubida-1685117598269-CX.jpg)
+* thumbnails --> destination of generated thumbnails (Sample: fotosubida-1685117598269-CX-thumbnail.jpg)
 
-I've set a dual source for index.ejs view in order to take any of the two pictures (foto or fotosubida)
+I've set a dual source for index.ejs view in order to take any of the two pictures (foto or fotosubida & thumbnail)
 
 ```html
 <td>
@@ -220,6 +220,8 @@ I've set a dual source for index.ejs view in order to take any of the two pictur
   alt="<%= anuncio.foto %>" width=200>
   <img src="fotossubidas/<%= anuncio.fotosubida %>" 
   alt="<%= anuncio.fotosubida %>" width=200>
+  <img src="thumbnails/<%= anuncio.thumbnail %>" 
+  alt="<%= anuncio.thumbnail %>" width=50>
 </td>
 ```
 
@@ -228,5 +230,6 @@ Start thumbnailer service:
 npm run thumbnailer
 ```
 
+* **IMPORTANT NOTE:** Picture files have to have `jpg` extension 
 
 
