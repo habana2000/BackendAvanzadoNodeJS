@@ -168,7 +168,7 @@ Student: Xavi Roca
   * dotenv --> `npm i dotenv` (almacenamiento variables de entorno)
   * i18n --> `npm i i18n` (internacionalización)
   * multer --> `npm i multer` (subida de imágenes, [npm multer](https://www.npmjs.com/package/multer))
-  * sharp --> `npm i jimp` (compresor de imágenes, [npm jimp](https://github.com/jimp-dev/jimp))
+  * jimp --> `npm i jimp` (compresor de imágenes, [npm jimp](https://github.com/jimp-dev/jimp))
   * cote --> `npm i cote` (building zero-configuration microservices, [cote](https://github.com/dashersw/cote))
 
 
