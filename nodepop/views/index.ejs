@@ -20,9 +20,13 @@
               <p><%= __('For sale?') %> <%= anuncio.venta %> // <%= __('Tags:') %> <%= anuncio.tags %></p>
             </td>    
             <td>
-              <img src="../images/anuncios/<%= anuncio.foto %>" alt="<%= anuncio.foto %>" width=200>
-              <img src="fotossubidas/<%= anuncio.fotosubida %>" alt="<%= anuncio.fotosubida %>" width=200>
-              <img src="thumbnails/<%= anuncio.thumbnail %>" alt="<%= anuncio.thumbnail %>" width=50>
+              <% if (anuncio.thumbnail) { %>
+                <img src="thumbnails/<%= anuncio.thumbnail %>" alt="<%= anuncio.thumbnail %>">
+              <% } else if (anuncio.fotosubida) { %>
+                <img src="fotossubidas/<%= anuncio.fotosubida %>" alt="<%= anuncio.fotosubida %>" width=200>
+              <% } else if (anuncio.foto) { %>
+                <img src="../images/anuncios/<%= anuncio.foto %>" alt="<%= anuncio.foto %>" width=200>
+              <% } %>
             </td>
           </tr>
           <% }) %>

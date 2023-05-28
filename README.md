@@ -216,12 +216,16 @@ I've set a dual source for index.ejs view in order to take any of the two pictur
 
 ```html
 <td>
-  <img src="../images/anuncios/<%= anuncio.foto %>" 
-  alt="<%= anuncio.foto %>" width=200>
+  <% if (anuncio.thumbnail) { %>
+  <img src="thumbnails/<%= anuncio.thumbnail %>" 
+  alt="<%= anuncio.thumbnail %>">
+  <% } else if (anuncio.fotosubida) { %>
   <img src="fotossubidas/<%= anuncio.fotosubida %>" 
   alt="<%= anuncio.fotosubida %>" width=200>
-  <img src="thumbnails/<%= anuncio.thumbnail %>" 
-  alt="<%= anuncio.thumbnail %>" width=50>
+  <% } else if (anuncio.foto) { %>
+  <img src="../images/anuncios/<%= anuncio.foto %>" 
+  alt="<%= anuncio.foto %>" width=200>
+  <% } %>
 </td>
 ```
 
