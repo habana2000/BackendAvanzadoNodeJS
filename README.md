@@ -212,7 +212,7 @@ I've created two new folders at /public directory
 * fotossubidas --> Including original pictures uploaded (Sample: fotosubida-1685117598269-CX.jpg)
 * thumbnails --> destination of generated thumbnails (Sample: fotosubida-1685117598269-CX-thumbnail.jpg)
 
-I've set a dual source for index.ejs view in order to take any of the two pictures (foto or fotosubida & thumbnail)
+I've set a dual source for index.ejs view in order to take any of the two pictures (thumbnail & fotosubida or foto)
 
 ```html
 <td>
@@ -234,6 +234,6 @@ Start thumbnailer service:
 npm run thumbnailer
 ```
 
-* **IMPORTANT NOTE:** Picture files have to have `jpg` extension 
+* **IMPORTANT NOTE:** Picture files must have `jpg` extension 
 
 
